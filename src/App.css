@@ -11,8 +11,18 @@ main {
     margin-top: 1rem;
 }
 
+.header {
+    font-weight: 700;
+}
+
 .title {
     margin-bottom: 1rem;
+}
+
+footer {
+    position: absolute;
+    text-align: center;
+    bottom: 10px;
 }
 
 /* Loader */

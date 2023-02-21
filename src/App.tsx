@@ -5,7 +5,7 @@ import { Paintings } from './Artists';
 function App() {
   let [image, updateImage] = useState("")
   let [isLoading, setIsLoading] = useState(false)
-  let [title, setTitle] = useState("")
+  let [title, setTitle] = useState("Click GENERATE to begin")
 
   const URL: string = import.meta.env.VITE_DALLE_GENERATION_URL
   const AuthToken: string = "Bearer " + import.meta.env.VITE_DALLE_AUTH_TOKEN
@@ -66,7 +66,8 @@ function App() {
   }
   return (
     <main>
-      <h3 className='title'>{title}</h3>
+      <h1 className='header'>artmix.</h1>
+      <p className='title'>{title}</p>
       {isLoading && <div className="lds-ripple-container"><div className="lds-ripple"><div></div><div></div></div></div>}
       {!isLoading && <img src={image} width={512} height={512} />}
 
@@ -76,6 +77,9 @@ function App() {
           className="submit-button"
           disabled={isLoading}>Generate</button>
       </form>
+      <footer>
+        <p>made with love using react, vite and dall-e2</p>
+      </footer>
     </main >
   )
 }
