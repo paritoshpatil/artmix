@@ -7,7 +7,7 @@ function App() {
   let [isLoading, setIsLoading] = useState(false)
   let [title, setTitle] = useState("Click GENERATE to begin")
 
-  const URL: string = import.meta.env.VITE_DALLE_GENERATION_URL
+  const openai_api: string = import.meta.env.VITE_DALLE_GENERATION_URL
   const AuthToken: string = "Bearer " + import.meta.env.VITE_DALLE_AUTH_TOKEN
 
   let artist1: String;
@@ -41,7 +41,7 @@ function App() {
 
   const makeRequest = (p: string) => {
     setIsLoading(true)
-    fetch(URL, {
+    fetch(openai_api, {
       method: 'POST',
       body: JSON.stringify({
         "prompt": p,
@@ -65,6 +65,27 @@ function App() {
       })
   }
 
+  const downloadImage = async () => {
+    if (!image) return;
+
+    try {
+      const response = await fetch(image);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "generated-image.png"; // Set download filename
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url); // Clean up memory
+    } catch (error) {
+      console.error("Error downloading image:", error);
+      alert("Failed to download image.");
+    }
+  };
+
 
   return (
     <main>
@@ -79,8 +100,9 @@ function App() {
           className="submit-button"
           disabled={isLoading}>Generate</button>
       </form>
-      <form method='get' action={image}>
+      <form>
         <button type="submit"
+          onClick={downloadImage}
           className="submit-button"
           disabled={isLoading}>Download Image</button>
       </form>
