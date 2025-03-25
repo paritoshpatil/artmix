@@ -46,7 +46,7 @@ function App() {
       body: JSON.stringify({
         "prompt": p,
         "n": 1,
-        "size": "1024x1024"
+        "size": "512x512"
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
