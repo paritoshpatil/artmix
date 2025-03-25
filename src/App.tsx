@@ -64,6 +64,8 @@ function App() {
         setIsLoading(false)
       })
   }
+
+
   return (
     <main>
       <h1 className='header'>artmix.</h1>
@@ -76,6 +78,11 @@ function App() {
           onClick={randomizePrompt}
           className="submit-button"
           disabled={isLoading}>Generate</button>
+      </form>
+      <form method='get' action={image}>
+        <button type="submit"
+          className="submit-button"
+          disabled={isLoading}>Download Image</button>
       </form>
       <footer>
         <p>made with love using react, vite and dall-e2</p>
