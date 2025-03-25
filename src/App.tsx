@@ -32,10 +32,10 @@ function App() {
     artist2 = Paintings[artistIndex2].artist
     painting = Paintings[artistIndex1].paintings[paintingIndex]
 
-    let newPrompt = `${painting} by ${artist1} painted in the style of ${artist2}`
+    let newPrompt = `A ${artist2}-inspired version of ${painting} by ${artist1}. The artwork maintains the iconic composition and key elements of the original but is reimagined in the signature style of ${artist2}. The brushstrokes, colors, and textures reflect the artist's unique artistic approach, bringing a fresh and expressive interpretation to the classic masterpiece.`
 
     console.log(newPrompt)
-    setTitle(newPrompt)
+    setTitle(`${painting} by ${artist1} in the style of ${artist2}`)
     makeRequest(newPrompt)
   }
 
