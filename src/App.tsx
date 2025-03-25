@@ -7,8 +7,8 @@ function App() {
   let [isLoading, setIsLoading] = useState(false)
   let [title, setTitle] = useState("Click GENERATE to begin")
 
-  const URL: string = import.meta.env.DALLE_GENERATION_URL
-  const AuthToken: string = "Bearer " + import.meta.env.DALLE_AUTH_TOKEN
+  const URL: string = import.meta.env.VITE_DALLE_GENERATION_URL
+  const AuthToken: string = "Bearer " + import.meta.env.VITE_DALLE_AUTH_TOKEN
 
   let artist1: String;
   let artist2: String;
